@@ -1,0 +1,6 @@
+a<-c(2.0,1.0,3.3)
+print(a)
+print(class(a))
+bla<-c('hi','there','how', 'are','you','?')
+print(bla)
+print(class(bla))
