@@ -55,3 +55,49 @@ for(i in 1:4){
   print (y[i])
 }
 y[1]
+
+################################
+hi<-c(1:10)
+buf<-c()
+for (i in hi){
+  print(i)
+  if(hi[i]>5){
+    buf<-c(buf,hi[i])
+  }
+}
+print(buf)
+###################
+#strings manipulation
+text<-'Hello World'
+text2<-'my name is Tiago'
+con<-paste0(text,text2)
+print(con)
+sp<-strsplit(text,split = 'l')
+print(sp[[1]][1])
+#######################
+count<-0
+count<-count+1
+count
+###########################
+bla<-"AA"
+if(class(bla)=="character"){
+  print("it is character!")
+}
+n<-32
+if(class(n)=="numeric"){
+  print("it is a number!")
+}
+
+if(bla!=""){
+  print('not empty')
+}
+######################################
+df<-data.frame(
+                  ID_UserType=c(1,2,3),
+                  Description=c('Admin','Developer','Guest')
+                )
+vals<-c(1,2,3)
+
+name<-which(df[['ID_UserType']]==3)
+print(df[['Description']][name])
+
