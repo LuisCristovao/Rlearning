@@ -114,3 +114,7 @@ for(i in 1:n_iterations){
   }
   print("Next Batch!!!!!!!!!!!!")
 }
+####################################################
+library(readxl)
+ex <- read_excel("./excel/Bla.xlsx")
+print(ex)
