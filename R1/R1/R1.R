@@ -116,5 +116,8 @@ for(i in 1:n_iterations){
 }
 ####################################################
 library(readxl)
-ex <- read_excel("./excel/Bla.xlsx")
-print(ex)
+library(compare)
+ex1 <- read_excel("./excel/Bla.xlsx")
+ex2 <- read_excel("./excel/Bla.xlsx")
+comparison <- compare(ex1,ex2,allowAll=TRUE)
+print(comparison)
