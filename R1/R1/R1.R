@@ -24,6 +24,7 @@ df[,1]
 df[1,]
 df[,2]
 df[['score']]
+df[1:2,]
 #######################################################
 
 age<-c(1:6)
@@ -100,4 +101,16 @@ vals<-c(1,2,3)
 
 name<-which(df[['ID_UserType']]==3)
 print(df[['Description']][name])
-
+###########################################
+nrows<-100
+rows_per_turn<-10
+n_iterations<-nrows/rows_per_turn
+print(n_iterations)
+for(i in 1:n_iterations){
+  start_index<-(i-1)*rows_per_turn+1
+  final_index<-rows_per_turn*i  
+  for(j in start_index:final_index){
+    print(j)
+  }
+  print("Next Batch!!!!!!!!!!!!")
+}
