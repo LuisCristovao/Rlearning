@@ -125,3 +125,9 @@ comparison <- compare(ex1,ex2,allowAll=TRUE)
 comparison2 <- compare(ex1,ex3,allowAll=TRUE)
 print(comparison)
 print(comparison2)
+###########################################################
+ex1 <- as.data.frame(read_excel("./excel/Bla.xlsx"))
+print(ex1$V1)
+plot(ex1$V1,ex1$V2)
+plot(1:100,1:100)
+
