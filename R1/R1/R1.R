@@ -226,3 +226,12 @@ st2="Delete"
 st3="Cancel"
 print(st1==st2)
 print(st1==st3)
+###############Concate DataFrame#####################################
+library(readxl)
+ex1 <- as.data.frame(read_excel("./excel/Bla.xlsx"))
+df1<-ex1[1:3,1:2]
+df1
+df2<-ex1[4:6,1:2]
+df2
+df3<-rbind(df1,df2)
+df3
