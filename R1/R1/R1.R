@@ -130,4 +130,99 @@ ex1 <- as.data.frame(read_excel("./excel/Bla.xlsx"))
 print(ex1$V1)
 plot(ex1$V1,ex1$V2)
 plot(1:100,1:100)
+plot()
+##############################################
+MyClass <- setRefClass(
+  "MyClass",
+  fields = list(
+    x = "ANY",
+    y = "numeric",
+    z = "character"
+  ),
+  methods = list(
+    initialize = function(x = NULL, y = 1:10, z = letters)
+    {
+      "This method is called when you create an instance of the class."
+      x <<- x
+      y <<- y
+      z <<- z
+      print("You initialized MyClass!")
+    },
+    hello = function()
+    {
+      "This method returns the string 'hello'."
+      "hello"
+    },
+    doubleY = function()
+    {
+      2 * y
+    },
+    printInput = function(input)
+    {
+      if(missing(input)) stop("You must provide some input.")
+      print(input)
+    }
+  )
+)
 
+obj1 <- MyClass$new()
+obj1$hello()
+obj1$doubleY()
+
+obj2 <- MyClass$new(x = TRUE, z = "ZZZ")
+obj2$printInput("I'm printing a line!")
+
+###############################################################
+library(readxl)
+PlotClass <- setRefClass(
+  "PlotClass",
+  fields = list(
+    path = "character",
+    column = "character",
+    end_index = "numeric",
+    actual_index = "numeric",
+    data = "ANY",
+    col_names="ANY",
+    step = "numeric"
+  ),
+  methods = list(
+    initialize=function(path_,column_,step_){
+      path<<-path_
+      column<<-column_
+      step<<-step_
+      actual_index<<-1
+      end_index<<-step
+      ReadDF()
+    },
+    ReadDF=function(){
+      data<<-as.data.frame(read_excel(path,sheet = 1,cell_rows(actual_index:end_index)))
+      col_names<<-colnames(data) 
+      actual_index<<-end_index
+      end_index<<-end_index+step
+    },
+    UpdataDF=function(){
+      new_data<-as.data.frame(read_excel(path,sheet = 1,cell_rows(actual_index:end_index),col_names = col_names))
+      if(length(new_data)>0){
+        actual_index <<- end_index
+        end_index<<-end_index+step
+        data <<- rbind(new_data, data)  
+      }
+      
+    },
+    Plot=function(){
+      plot(1:length(data[[column]]),data[[column]],type = 'l',xlab = "time",ylab = column)
+    }
+  )
+)
+obj=PlotClass$new("./excel/Bla.xlsx","V1",10)
+obj$Plot()
+obj2=PlotClass$new("./excel/Bla.xlsx","V2",20)
+obj2$Plot()
+obj$UpdataDF()
+obj$Plot()
+###String Compare################################
+st1="Cancel"
+st2="Delete"
+st3="Cancel"
+print(st1==st2)
+print(st1==st3)
