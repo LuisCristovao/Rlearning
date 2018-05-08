@@ -235,3 +235,12 @@ df2<-ex1[4:6,1:2]
 df2
 df3<-rbind(df1,df2)
 df3
+#################sub titles on plot and legend######################
+library(readxl)
+ex1 <- as.data.frame(read_excel("./excel/Bla.xlsx"))
+color<-rgb(1,0,0)
+plot(1:100,1:100, xlab = "ola1x",sub = "olax2",ylab = "y1",main = "Ola", type="l",col=color)
+lines(1:100,ex1$V1[1:100],col=rgb(0,1,0))
+legend(0, 100, legend=c("Line 1", "Line 2"),
+       col=c(rgb(1,0,0),rgb(0,1,0)), lty=1, cex=0.8)
+
