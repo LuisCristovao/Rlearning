@@ -243,4 +243,11 @@ plot(1:100,1:100, xlab = "ola1x",sub = "olax2",ylab = "y1",main = "Ola", type="l
 lines(1:100,ex1$V1[1:100],col=rgb(0,1,0))
 legend(0, 100, legend=c("Line 1", "Line 2"),
        col=c(rgb(1,0,0),rgb(0,1,0)), lty=1, cex=0.8)
+########### detect val in df ########################################################
+library(readxl)
+ex1 <- as.data.frame(read_excel("./excel/Bla.xlsx"))
+(ex1$V1==c(V1=2))
+indexes=which(ex1$V1==c(V1=2))
+indexes
+ex1[indexes,]
 
