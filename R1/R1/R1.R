@@ -250,4 +250,20 @@ ex1 <- as.data.frame(read_excel("./excel/Bla.xlsx"))
 indexes=which(ex1$V1==c(V1=2))
 indexes
 ex1[indexes,]
+############ HTML PARSER ###########################################################
 
+str<-'<p>dsdsd</p>'
+h<-strsplit(str,split = '<p>')
+out<-gsub('</p>','',h[[1]][2])
+out
+################## Time to execute function#############################
+loop<-function(n_loops){
+	for(i in 1:n_loops){
+		print(i)
+	}
+}
+start.time <- Sys.time()
+loop(1000)
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+print(time.taken)
